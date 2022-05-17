@@ -5,5 +5,5 @@ end
 Thread.abort_on_exception = true
 
 Rubycoin::Miscellaneous.every(3.seconds) do
-  puts '-------------------', $NODE.blockchain.to_s
+  Gossip::SpreadWithPeers.new.call $NODE
 end

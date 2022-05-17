@@ -14,7 +14,7 @@ module Core
     end
 
     private
-    
+
     def initial_setup
       peer_port = ENV['PEER_PORT'].to_i
       message = if peer_port.zero? # genesis
