@@ -5,6 +5,5 @@ end
 Thread.abort_on_exception = true
 
 Rubycoin::Miscellaneous.every(3.seconds) do
-  Gossip::SpreadWithPeers.new.call $NODE
-  puts '-----'
+  Gossip::SpreadWithPeers.new.call($NODE) if $NODE.port.present?
 end

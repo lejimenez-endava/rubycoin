@@ -10,7 +10,6 @@ module Core
       @peers = ThreadSafe::Array.new([port])
       # port does not exist when TCPServer is not initialized
       initial_setup if @port.present?
-      puts blockchain.to_s
     end
 
     def update_blockchain(their_blockchain)
@@ -22,7 +21,7 @@ module Core
     end
 
     def update_peers(their_peers)
-      @peers = (@peers + their_peers).uniq
+      @peers = (@peers + their_peers).map(&:to_i).uniq
     end
 
     private

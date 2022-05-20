@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/send_money', to: 'transfers#create'
   # Defines the root path route ("/")
   # root "articles#index"
 end

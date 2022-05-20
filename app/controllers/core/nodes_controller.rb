@@ -7,6 +7,10 @@ module Core
       render json: data[:information], status: (success ? 200 : 500)
     end
 
+    def show
+      render json: { public_key: $NODE.public_key }, status: 200
+    end
+
     private
 
     def gossip_params

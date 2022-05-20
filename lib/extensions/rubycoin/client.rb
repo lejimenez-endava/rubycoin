@@ -10,7 +10,8 @@ module Rubycoin
       end
     end
 
-    def fetch_public_information
+    def fetch_public_information(port)
+      Faraday.get("#{URL}:#{port}/core/node").body
     end
 
     module_function :gossip, :fetch_public_information
