@@ -1,10 +1,9 @@
 module Gossip
   class SpreadWithPeer
     def call(node, port)
-      response = Rubycoin::Client.gossip port, node.peers, node.blockchain
-      # a = JSON.parse(response)
-      # Gossip::ExchangeInformation.new.call node, { their_blockchain: response[:blockchain], their_peers: response[:peers] }
-      binding.break
+      raw_response = Rubycoin::Client.gossip port, node.peers, node.blockchain
+      response = JSON.parse(raw_response)
+      Gossip::ExchangeInformation.new.call node, { blockchain: response[:blockchain], peers: response[:peers] }
     end
   end
 end

@@ -12,13 +12,13 @@ module Gossip
     # data[:information] #=> {}
     #
     def call(node, data = {})
-      node.update_blockchain data[:blockchain]
+      node.update_blockchain YAML.load(data[:blockchain])
       node.update_peers data[:peers]
       [
         true,
         {
           information: {
-            blockchain: node.blockchain,
+            blockchain: YAML.dump(node.blockchain),
             peers: node.peers
           }
         }

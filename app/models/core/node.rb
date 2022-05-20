@@ -6,7 +6,7 @@ module Core
 
     def initialize
       @private_key, @public_key = Rubycoin::PKI.generate_key_pair
-      @port = Rails::Server::Options.new.parse!(ARGV)[:Port] rescue nil # PAIRING_PORT=3032 rs -p 3000
+      @port = Rails::Server::Options.new.parse!(ARGV)[:Port].to_i rescue nil # PAIRING_PORT=3032 rs -p 3000
       @peers = ThreadSafe::Array.new([port])
       # port does not exist when TCPServer is not initialized
       initial_setup if @port.present?

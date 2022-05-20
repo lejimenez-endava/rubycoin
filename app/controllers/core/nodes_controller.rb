@@ -4,9 +4,6 @@ module Core
 
     def gossip
       success, data = Gossip::ExchangeInformation.new.call $NODE, gossip_params
-      a = YAML.dump $NODE.blockchain
-      bb = YAML.load a
-      binding.break
       render json: data[:information], status: (success ? 200 : 500)
     end
 
