@@ -14,7 +14,7 @@ module Core
     end
 
     def update_blockchain(their_blockchain)
-      return if their_blockchain.nil?
+      return if their_blockchain.blank?
       return if @blockchain && their_blockchain.length <= @blockchain.length
       return unless their_blockchain.valid?
 

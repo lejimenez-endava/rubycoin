@@ -4,7 +4,7 @@ module Rubycoin
 
     def gossip(port, peers, blockchain)
       begin
-        Faraday.post("#{URL}:#{port}/core/node/gossip", gossip: { peers: peers, blockchain: blockchain }).body
+        Faraday.post("#{URL}:#{port}/core/node/gossip", gossip: { peers: peers, blockchain: (blockchain || '') }).body
       rescue Faraday::ConnectionFailed => e
         raise
       end

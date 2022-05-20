@@ -4,7 +4,8 @@ module Core
 
     def gossip
       success, data = Gossip::ExchangeInformation.new.call $NODE, gossip_params
-      render json: data[:information], status: success
+      binding.break
+      render json: data[:information], status: (success ? 200 : 500)
     end
 
     private

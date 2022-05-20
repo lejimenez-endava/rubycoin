@@ -12,8 +12,8 @@ module Gossip
     # data[:information] #=> {}
     #
     def call(node, data = {})
-      node.update_blockchain data[:their_blockchain]
-      node.update_peers data[:their_peers]
+      node.update_blockchain data[:blockchain]
+      node.update_peers data[:peers]
       [
         true,
         {
